@@ -1,13 +1,15 @@
-<h1>NEW</h1>
+<h1>EDIT</h1>
 
 <% if @article.errors.any?%>
 <h2>the message is to preventing any errors from beong saved</h2>
-  <%@article.errors.full_messages.each do |msg|%>
-    <%= msg%>
-  <%end%>
+  <ul>
+    <%@article.errors.full_messages.each do |msg|%>
+      <li><%= msg%></li>
+    <%end%>
+  </ul>
 <%end%>
 
-<%= form_with scope: :article, data: { turbo: false }, url: articles_path, local: true do |f|%>
+<%= form_with(model: @article, local: true) do |f|%>
 
 <p>
   <%= f.label :title %><br/>
